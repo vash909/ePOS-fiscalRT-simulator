@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sim-epos - Epson printer simulator</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>sim-epos</h1>
+      <div class="subtitle">Epson ePOS-Print / Fiscal RT simulator &mdash; development/debug only, no fiscal value</div>
+    </div>
+    <div class="controls">
+      <label>Paper width:
+        <select id="paperWidth">
+          <option value="58">58 mm</option>
+          <option value="80">80 mm</option>
+        </select>
+      </label>
+      <label>Simulated printer state:
+        <select id="printerStatus"></select>
+      </label>
+      <button id="clearBtn" class="danger">Clear list</button>
+      <span id="connStatus" class="conn-status disconnected" title="WebSocket connection state">&#9679;</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="receipt-list" id="receiptList">
+      <p class="empty-hint" style="padding:12px;">No receipts received.</p>
+    </aside>
+    <section class="receipt-detail" id="receiptDetail">
+      <p class="empty-hint">Select a receipt from the list, or send an XML request to the simulator (see README for curl examples).</p>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    sim-epos &mdash; non-fiscal simulator, sends nothing to external systems. Development/debug/preview only.
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<printerFiscalReceipt operator="2">
+  <beginFiscalReceipt operator="2"/>
+  <printRecItem description="BOOK" quantity="1" unitPrice="20.00" department="3"/>
+  <posSpecificField value="ABC123"/>
+  <printRecVoid/>
+  <endFiscalReceipt operator="2"/>
+</printerFiscalReceipt>

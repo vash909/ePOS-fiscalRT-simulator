@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<printerFiscalReceipt operator="1">
+  <beginFiscalReceipt operator="1"/>
+  <printRecItem description="STILL WATER 0.5L" quantity="2.000" unitPrice="1.50" department="1"/>
+  <printRecItem description="HAM SANDWICH" quantity="1.000" unitPrice="3.50" department="2"/>
+  <printRecItemAdjustment description="Customer discount" adjustmentType="2" amount="10"/>
+  <printRecSubtotal/>
+  <printRecMessage message="Thank you, see you soon!"/>
+  <printRecTotal description="CASH" payment="7.00" paymentType="0" index="1"/>
+  <endFiscalReceipt operator="1"/>
+</printerFiscalReceipt>

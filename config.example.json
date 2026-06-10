@@ -1,0 +1,29 @@
+{
+  "httpHost": "0.0.0.0",
+  "httpPort": 8000,
+
+  "rawTcp": {
+    "enabled": true,
+    "port": 9100,
+    "host": "0.0.0.0"
+  },
+
+  "endpoints": {
+    "fiscal": "/cgi-bin/fpmate.cgi",
+    "epos": "/cgi-bin/epos/service.cgi"
+  },
+
+  "paper": {
+    "defaultWidthMm": 58,
+    "allowedWidthsMm": [58, 80]
+  },
+
+  "printer": {
+    "defaultStatus": "online",
+    "defaultResponseMode": "ok",
+    "permissive": true
+  },
+
+  "dataDir": "./data",
+  "maxReceipts": 500
+}

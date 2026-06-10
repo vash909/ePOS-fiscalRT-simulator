@@ -1,0 +1,350 @@
+:root {
+  --bg: #1e2228;
+  --panel: #2a2f37;
+  --panel-2: #343a44;
+  --text: #e6e6e6;
+  --muted: #9aa3af;
+  --accent: #4f9dff;
+  --green: #3ecf8e;
+  --red: #ff5d5d;
+  --yellow: #ffc107;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid #000;
+}
+
+.topbar h1 {
+  font-size: 18px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.topbar .subtitle {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.controls label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+select, button {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+button.danger {
+  background: #5c2020;
+  border-color: #803030;
+}
+
+button.primary {
+  background: #1f4f8f;
+  border-color: #2d6cc0;
+}
+
+.conn-status {
+  font-size: 18px;
+  line-height: 1;
+}
+.conn-status.connected { color: var(--green); }
+.conn-status.disconnected { color: var(--red); }
+
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  min-height: 0;
+}
+
+.receipt-list {
+  overflow-y: auto;
+  border-right: 1px solid #000;
+  background: var(--panel);
+}
+
+.receipt-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1a1d22;
+  cursor: pointer;
+  font-size: 12.5px;
+}
+
+.receipt-item:hover {
+  background: var(--panel-2);
+}
+
+.receipt-item.selected {
+  background: #1f4f8f;
+}
+
+.receipt-item .row1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.receipt-item .endpoint {
+  color: var(--muted);
+  font-size: 11px;
+  word-break: break-all;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.badge.fiscal { background: #2d6cc0; color: #fff; }
+.badge.epos { background: #2e8b57; color: #fff; }
+.badge.unknown { background: #777; color: #fff; }
+.badge.error { background: #b03030; color: #fff; }
+
+.receipt-detail {
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.empty-hint {
+  color: var(--muted);
+}
+
+.detail-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+  align-items: center;
+}
+
+.detail-meta {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.detail-meta b { color: var(--text); }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.tabs button {
+  background: var(--panel-2);
+}
+.tabs button.active {
+  background: var(--accent);
+  color: #08213d;
+  font-weight: 600;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+pre.xml-view {
+  background: #14171c;
+  color: #c8e1ff;
+  padding: 10px;
+  border-radius: 6px;
+  overflow: auto;
+  max-height: 70vh;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.errors-box {
+  background: #3a2a14;
+  border: 1px solid #6b4a1e;
+  color: #ffd699;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  margin-bottom: 10px;
+}
+
+/* ---- Thermal paper preview ---- */
+.paper-wrap {
+  background: #15171b;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.receipt-paper {
+  background: #fdfdfd;
+  color: #000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12.5px;
+  line-height: 1.35;
+  padding: 12px 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.receipt-paper.w58 { width: 32ch; }
+.receipt-paper.w80 { width: 46ch; }
+
+.receipt-paper.flash {
+  animation: flash 0.6s ease;
+}
+@keyframes flash {
+  0% { box-shadow: 0 0 0 4px var(--accent); }
+  100% { box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+}
+
+.line { display: block; }
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.align-right { text-align: right; }
+
+.bold { font-weight: bold; }
+.underline { text-decoration: underline; }
+.reverse { background: #000; color: #fff; }
+
+.cut-line {
+  border-top: 1px dashed #999;
+  margin: 6px 0;
+  text-align: center;
+  color: #999;
+  font-size: 11px;
+}
+
+.feed-line { display: block; height: 1em; }
+
+.placeholder-box {
+  border: 1px dashed #888;
+  text-align: center;
+  padding: 4px 2px;
+  margin: 3px 0;
+  color: #555;
+  font-size: 11px;
+}
+
+.raw-line {
+  background: #fff3cd;
+  color: #7a5d00;
+  font-style: italic;
+  padding: 2px 4px;
+  border-left: 3px solid #ffc107;
+  margin: 2px 0;
+  font-size: 11px;
+  word-break: break-all;
+}
+
+.fiscal-header {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px dashed #000;
+  margin-bottom: 4px;
+  padding-bottom: 2px;
+}
+
+.item-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+.item-desc { flex: 1; }
+.item-qty {
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  font-size: 11.5px;
+}
+
+.adjustment-line {
+  padding-left: 8px;
+  font-size: 11.5px;
+  color: #333;
+}
+
+.subtotal-line, .payment-line {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.fiscal-footer {
+  border-top: 1px dashed #000;
+  margin-top: 6px;
+  padding-top: 4px;
+}
+
+.message-line {
+  text-align: center;
+  font-style: italic;
+}
+
+.void-line {
+  text-align: center;
+  font-weight: bold;
+  color: #b00000;
+  border: 2px solid #b00000;
+  padding: 2px;
+  margin: 4px 0;
+}
+
+footer.app-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 6px;
+  border-top: 1px solid #000;
+  background: var(--panel);
+}

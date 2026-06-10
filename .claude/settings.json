@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); cd \"c:\\\\Users\\\\utente\\\\sim-epos\"; npm install)",
+      "Bash(PATH='/c/Program Files/nodejs:__TRACKED_VAR__' node src/server.js)",
+      "Bash(curl -s -X POST http://127.0.0.1:8000/cgi-bin/epos/service.cgi -H \"Content-Type: text/xml; charset=utf-8\" --data-binary @-)",
+      "Bash(curl -s -i -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8000/cgi-bin/epos/service.cgi -X POST -H \"Content-Type: text/xml\" --data '<epos-print xmlns=\"http://www.epson-pos.com/schemas/2011/03/epos-print\"><text>test</text></epos-print>')",
+      "Bash(curl -s -X POST http://127.0.0.1:8000/cgi-bin/fpmate.cgi -H \"Content-Type: text/xml; charset=utf-8\" --data-binary @-)",
+      "Bash(curl -s -X POST http://127.0.0.1:8000/cgi-bin/fpmate.cgi -H \"Content-Type: text/xml\" --data-binary @-)",
+      "Bash(PATH='/c/Program Files/nodejs:__TRACKED_VAR__' node -e ' *)"
+    ]
+  }
+}

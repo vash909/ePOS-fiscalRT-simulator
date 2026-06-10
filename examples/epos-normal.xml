@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+ <soapenv:Body>
+  <epos-print xmlns="http://www.epson-pos.com/schemas/2011/03/epos-print">
+    <text align="center" em="true">DEMO SHOP LLC
+</text>
+    <text align="center">1 Main Street - Milan
+</text>
+    <text>--------------------------------
+</text>
+    <text align="left">Coffee             1 x 1.20   1.20
+</text>
+    <text align="left">Croissant          2 x 1.00   2.00
+</text>
+    <text>--------------------------------
+</text>
+    <text align="right" width="2" height="2">TOT EUR 3.20
+</text>
+    <feed line="2"/>
+    <barcode type="code128">1234567890</barcode>
+    <symbol type="qrcode">https://example.com</symbol>
+    <feed line="2"/>
+    <cut type="feed"/>
+  </epos-print>
+ </soapenv:Body>
+</soapenv:Envelope>
